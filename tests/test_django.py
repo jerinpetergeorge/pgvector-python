@@ -138,3 +138,4 @@ class TestDjango:
     def test_form(self):
         form = ItemForm(data={'embedding': [1, 2, 3]})
         assert form.is_valid()
+        form.save(commit=True)
