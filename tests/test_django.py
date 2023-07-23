@@ -135,7 +135,12 @@ class TestDjango:
                 for obj in serializers.deserialize(format, data):
                     obj.save()
 
-    def test_form(self):
+    def test_form_1(self):
         form = ItemForm(data={'embedding': [1, 2, 3]})
+        assert form.is_valid()
+        form.save(commit=True)
+        
+    def test_form_2(self):
+        form = ItemForm(data={'embedding': "[1, 2, 3]"})
         assert form.is_valid()
         form.save(commit=True)
